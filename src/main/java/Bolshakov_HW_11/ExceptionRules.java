@@ -14,8 +14,10 @@ public class ExceptionRules {
     }
 
     public void TryToLogIn() throws AuthorizationException {
-        if ((password == null) || (login == null)) {
+        if ((password == "") || (login == "")) {
             throw new AuthorizationException("Your login or password is empty!");
+        } else if ((password == null) || (login == null)) {
+            throw new AuthorizationException("Your login or password can`t be null");
         } else if (password.length() < 6) {
                 throw new AuthorizationException("Your password is too short!");
             } else if (!login.equals(LOGINDATA) || !password.equals(PASSWORDDATA)) {
